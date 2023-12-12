@@ -281,7 +281,7 @@ add_filter(
 add_action(
 	'admin_init',
 	function () {
-		if ( isset( $_SERVER['SCRIPT_NAME'] ) && '/wp-admin/plugins.php' === $_SERVER['SCRIPT_NAME'] ) {
+		if ( isset( $_SERVER['SCRIPT_NAME'] ) && in_array( $_SERVER['SCRIPT_NAME'], ['/wp-admin/plugins.php', '/wp-admin/admin-ajax.php'] ) ) {
 			if ( ! current_user_can( 'manage_network_plugins' ) ) {
 				/**
 				 * Remove not enabled plugins in site plugin
